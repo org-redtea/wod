@@ -1,0 +1,6 @@
+node_modules/
+commonjs/
+es/
+esnext/
+coverage/
+.idea
