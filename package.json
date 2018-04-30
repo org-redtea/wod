@@ -1,6 +1,6 @@
 {
   "name": "@redtea/wod",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Allows execute any function in web worker",
   "main": "umd/index.js",
   "publishConfig": {
