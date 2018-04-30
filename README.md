@@ -28,7 +28,7 @@ const errorListener = (event) => console.log(event.message);
 Worker1.on('message', listener);
 
 // will output 'Message from Worker1' to console
-Worker.exec(() => postMessage('Message from Worker1'));
+Worker1.exec(() => postMessage('Message from Worker1'));
 
 // Using decorator
 
