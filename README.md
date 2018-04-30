@@ -48,7 +48,7 @@ decoratedFunction();
 Worker1.on('error', errorListener);
 
 // will print error message
-Worker.exec(() => throw 'Error from worker1');
+Worker1.exec(() => throw 'Error from worker1');
 
 // off event listener
 Worker1.off('message', listener);
