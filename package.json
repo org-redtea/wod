@@ -1,5 +1,5 @@
 {
-  "name": "@redtea/wothread",
+  "name": "@redtea/wod",
   "version": "0.0.1",
   "description": "Allows execute any function in web worker",
   "main": "umd/index.js",
