@@ -88,5 +88,5 @@ Create the decorator over *prog*. The decorator execute *prog* in the web worker
 
 const wrapped = useThread(WodInstance)(function(arg) { postMessage(arg); });
 
-wrapped('hellow');
+wrapped('hello');
 ```
