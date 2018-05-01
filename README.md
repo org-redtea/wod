@@ -39,9 +39,6 @@ let decoratedFunction = useThread(Worker1)(() => postMessage('Message from Worke
 // print the same message to console as above
 decoratedFunction();
 
-// if you use typescript:
-// @useThread(Worker1) () => postMessage('Message from Worker1');
-
 // catching errors
 
 // subscribe to any error
@@ -68,7 +65,7 @@ Subscribe to event. Currently supported: `message`, `error`.
 
 Unsubscribe from event.
 
-#### exec(*prog*: `function`[, *args*: `any[]`])
+#### Wod.exec(*prog*: `function`[, *args*: `any[]`]): `void`
 
 Execute *prog* in web worker thread. Optional *args* will be passed to prog as arguments.
 ```JS
@@ -76,8 +73,20 @@ Execute *prog* in web worker thread. Optional *args* will be passed to prog as a
 Worker.exec((a, b, c) => console.log(a + b + c), [1, 2, 3]);
 ```
 
+#### Wod.terminate(): `void`
+
+Terminate the web worker.
+
+
 ## Decorator
 
 #### useThread(*thread*: `Wod`)(*prog*: `function`): `function`
 
 Create the decorator over *prog*. The decorator execute *prog* in the web worker when call.
+
+```JS
+
+const wrapped = useThread(WodInstance)(function(arg) { postMessage(arg); });
+
+wrapped('hellow');
+```
