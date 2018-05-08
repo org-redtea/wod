@@ -11,7 +11,7 @@
 
 <p align="center">A function 🎁 > Wod 🚀🎁 > WebWorker 🎁👌 > 🎉</p>
 
-# Introduction
+## Introduction
 
 Wod is a library that provide ability to spawn the web worker instance and execute any functions into it.
 
@@ -22,7 +22,6 @@ $ npm install --save @redtea/wod
 
 ## Usage
 
-##### Import
 
 Package supports ES6, UMD module systems.
 
@@ -43,7 +42,7 @@ HTML
 <script>var T1 = new Wod.Wod();</script>
 ```
 
-##### Examples
+Examples
 ```JS
 // Create a instance of Wod. It also spawn a new web worker instance
 const Worker_1 = new Wod(); // or Wod.spawn()
