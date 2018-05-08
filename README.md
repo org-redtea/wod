@@ -1,9 +1,19 @@
-# Wod
+<h1 align="center">Wod</h2>
 
-[![npm](https://img.shields.io/npm/v/@redtea/wod.svg)](https://www.npmjs.com/package/@redtea/wod)
-[![Travis](https://img.shields.io/travis/org-redtea/wod.svg)](https://travis-ci.org/org-redtea/wod)
+<p align="center">
+<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/npm/v/@redtea/wod.svg" alt="npm"></a>
+<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/bundlephobia/minzip/@redtea/wod.svg" alt="npm bundle size (minified + gzip)"></a>
+<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/npm/types/@redtea/wod.svg" alt="npm type definitions"></a>
+<a href="https://travis-ci.org/org-redtea/wod"><img src="https://img.shields.io/travis/org-redtea/wod.svg" alt="Travis"></a>
+<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/npm/l/@redtea/wod.svg" alt="npm"></a>
+<a href="https://github.com/org-redtea/wod"><img src="https://img.shields.io/github/stars/org-redtea/wod.svg?style=social&label=Stars" alt="GitHub stars"></a>
+</p>
 
-Allows execute any function in web worker
+<p align="center">A function 🎁 > Wod 🚀🎁 > WebWorker 🎁👌 > 🎉</p>
+
+# Introduction
+
+Wod is a library that provide ability to spawn the web worker instance and execute any functions into it.
 
 ## Install
 ```bash
@@ -11,51 +21,73 @@ $ npm install --save @redtea/wod
 ```
 
 ## Usage
+
+##### Import
+
+Package supports ES6, UMD module systems.
+
+
+ES6
 ```JS
 import { Wod, useThread } from "@redtea/wod"
-// or
-// const wod = require("@redtea/wod");
-// or
-// in html <script src="https://unpkg.com/@redtea/intervals"></script>
-// <script>var T1 = new Wod.Wod();</script>
+```
 
-// create instance of worker
-const Worker1 = new Wod(); // or Wod.spawn()
+Commonjs
+```JS
+const wod = require("@redtea/wod");
+```
+
+HTML
+```HTML
+<script src="https://unpkg.com/@redtea/intervals"></script>
+<script>var T1 = new Wod.Wod();</script>
+```
+
+##### Examples
+```JS
+// Create a instance of Wod. It also spawn a new web worker instance
+const Worker_1 = new Wod(); // or Wod.spawn()
+
+// Define event listeners
 const listener = (event) => console.log(event.data);
 const errorListener = (event) => console.log(event.message);
 
-// subscribe to any message from Worker1
-Worker1.on('message', listener);
+// Subscribe to any message from the Worker_1 thread
+// The same as WebWorker.onmessage = function() {} 
+Worker_1.on('message', listener);
 
-// will output 'Message from Worker1' to console
-Worker1.exec(() => postMessage('Message from Worker1'));
+// Subscribe to any errors that may occure in the Worker_1 thread
+// The same as WebWorker.onerror = function() {} 
+Worker_1.on('error', errorListener);
+
+// This line execute the function in the Worker_1 thread context and post the 
+// message to the Main thread. As result, message 'Message from Worker_1'
+// will output to console of the Main thread
+Worker_1.exec(() => postMessage('Message from Worker_1'));
 
 // Using decorator
 
-// wrap any function with decorator
-let decoratedFunction = useThread(Worker1)(() => postMessage('Message from Worker1'));
+// Create a decorator that execute the function in the Worker_1 thread
+let sayHelloToTheMainThread = useThread(Worker_1)(() => postMessage('Hello from Worker1'));
 
-// call it
-// print the same message to console as above
-decoratedFunction();
+// This will print 'Hello from Worker1' to console of the Main thread
+sayHelloToTheMainThread();
 
-// catching errors
+// Catching errors
 
-// subscribe to any error
-Worker1.on('error', errorListener);
+// As we was subscribe to any error event from the Worker_1 above
+// this will print the error message to the Main thread's console
+Worker_1.exec(() => throw 'Error from Worker_1');
 
-// will print error message
-Worker1.exec(() => throw 'Error from worker1');
+// Off event listener
+Worker_1.off('message', listener);
+Worker_1.off('error', errorListener);
 
-// off event listener
-Worker1.off('message', listener);
-Worker1.off('error', errorListener);
-
-// terminate the worker
-Worker1.terminate();
+// Terminate the worker
+Worker_1.terminate();
 ```
 
-## Wod instance
+## Wod
 
 #### Wod.on(*event*: `string`, *listener*: `function`): `void`
 
@@ -67,7 +99,7 @@ Unsubscribe from event.
 
 #### Wod.exec(*prog*: `function`[, *args*: `any[]`]): `void`
 
-Execute *prog* in web worker thread. Optional *args* will be passed to prog as arguments.
+Execute *prog* in web worker thread. Optional *args* will be passed to *prog* as arguments.
 ```JS
 // print 6
 Worker.exec((a, b, c) => console.log(a + b + c), [1, 2, 3]);
@@ -82,7 +114,7 @@ Terminate the web worker.
 
 #### useThread(*thread*: `Wod`)(*prog*: `function`): `function`
 
-Create the decorator over *prog*. The decorator execute *prog* in the web worker when call.
+Creates a decorator over *prog*. Each call of the decorator execute *prog* in the web worker context that *thread* bound to.
 
 ```JS
 
