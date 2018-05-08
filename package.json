@@ -1,12 +1,13 @@
 {
   "name": "@redtea/wod",
   "version": "0.0.5",
-  "description": "Allows execute any function in web worker",
+  "description": "Wod is a library that provide ability to spawn the web worker instance and execute any functions into it",
   "main": "umd/index.js",
   "publishConfig": {
     "access": "public"
   },
   "module": "es/index.js",
+  "sideEffects": false,
   "typings": "types/index.d.ts",
   "files": [
     "umd/",
