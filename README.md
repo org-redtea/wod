@@ -34,7 +34,7 @@ const wod = require("@redtea/wod");
 
 HTML
 ```HTML
-<script src="https://unpkg.com/@redtea/intervals"></script>
+<script src="https://unpkg.com/@redtea/wod"></script>
 <script>var T1 = new Wod.Wod();</script>
 ```
 
