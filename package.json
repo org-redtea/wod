@@ -1,6 +1,6 @@
 {
   "name": "@redtea/wod",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Wod is a library that provide ability to spawn the web worker instance and execute any functions into it",
   "main": "umd/index.js",
   "publishConfig": {
