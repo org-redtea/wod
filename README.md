@@ -1,19 +1,15 @@
-<h1 align="center">Wod</h2>
+# Wod
 
-<p align="center">
-<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/npm/v/@redtea/wod.svg" alt="npm"></a>
-<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/bundlephobia/minzip/@redtea/wod.svg" alt="npm bundle size (minified + gzip)"></a>
-<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/npm/types/@redtea/wod.svg" alt="npm type definitions"></a>
-<a href="https://travis-ci.org/org-redtea/wod"><img src="https://img.shields.io/travis/org-redtea/wod.svg" alt="Travis"></a>
-<a href="https://www.npmjs.com/package/@redtea/wod"><img src="https://img.shields.io/npm/l/@redtea/wod.svg" alt="npm"></a>
-<a href="https://github.com/org-redtea/wod"><img src="https://img.shields.io/github/stars/org-redtea/wod.svg?style=social&label=Stars" alt="GitHub stars"></a>
-</p>
-
-<p align="center">A function 🎁 > Wod 🚀🎁 > WebWorker 🎁👌 > 🎉</p>
+[![npm](https://img.shields.io/npm/v/@redtea/wod.svg)](https://www.npmjs.com/package/@redtea/wod)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@redtea/wod.svg)](https://www.npmjs.com/package/@redtea/wod)
+[![npm type definitions](https://img.shields.io/npm/types/@redtea/wod.svg)](https://www.npmjs.com/package/@redtea/wod)
+[![Travis](https://img.shields.io/travis/org-redtea/wod.svg)](https://travis-ci.org/org-redtea/wod)
+[![npm](https://img.shields.io/npm/l/@redtea/wod.svg)](https://www.npmjs.com/package/@redtea/wod)
+[![GitHub stars](https://img.shields.io/github/stars/org-redtea/wod.svg?style=social&label=Stars)](https://github.com/org-redtea/wod)
 
 ## Introduction
 
-Wod is a library that provide ability to spawn the web worker instance and execute any functions into it.
+Wod is a library that provide the ability to spawn the web worker instance and execute any functions into it.
 
 ## Install
 ```bash
@@ -90,11 +86,11 @@ Worker_1.terminate();
 
 #### Wod.on(*event*: `string`, *listener*: `function`): `void`
 
-Subscribe to event. Currently supported: `message`, `error`.
+Subscribe to *event*. Currently supported: `message`, `error`.
 
 #### Wod.off(*event*: `string`, *listener*: `function`): `void`
 
-Unsubscribe from event.
+Unsubscribe from *event*.
 
 #### Wod.exec(*prog*: `function`[, *args*: `any[]`]): `void`
 
